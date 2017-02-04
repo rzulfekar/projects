@@ -1,0 +1,93 @@
+// Copyright Karat, Inc. 2016-2017 - Do not distribute or republish.
+
+using System;
+
+// Imagine we have an image. We’ll represent this image as a simple 2D array where every pixel is a 1 or a 0. The image you get is known to have a single rectangle of 0s on a background of 1s. Write a function that takes in the image and returns the coordinates of the rectangle -- either top-left and bottom-right; or top-left, width, and height.
+
+class Solution
+{
+    // Sample input
+    static int[][] image = new int[][] 
+    {
+      new int[] {1, 1, 1, 1, 1, 1, 1},
+      new int[] {1, 1, 1, 1, 1, 1, 1},
+      new int[] {1, 1, 1, 0, 0, 0, 0},
+      new int[] {1, 1, 1, 0, 0, 0, 0},
+      new int[] {1, 1, 1, 1, 1, 1, 1}
+    };    
+    
+    // Your function here
+    public static int[ , ] GetRecWidth(int[][] image)
+    {
+        int topLeft = -1;
+        int bottomRight = -1;
+        int[ , ] coord = new int[2,2];
+        bool topLeftFound = false;
+        bool bottomRightFound = false;
+        bool topRightFound = false;
+        bool bottomLeftFound = false;
+        
+        for(int row = 0; row < image.Length; row++) 
+        {
+        
+            for(int column = 0; column < image[row].Length; column++)
+            {
+                int currentValue = image[row][column];
+                
+                if (currentValue == 0)
+                {
+
+                    if (!topLeftFound)
+                    {
+                        coord[0, 0] = row;
+                        coord[0,1] = column;
+                        topLeftFound = true;
+                    }
+                    else
+                    {
+                        
+                        if (!topRightFound)
+                        {
+                            if (column + 1 < image[row].Length && image[row][column+1] == 1)
+                            {
+                                // top right
+                                //coord[0, 1] = column;
+                                topRightFound = true;
+                            }
+                        }                        
+                        
+                        if (topRightFound && topLeftFound)
+                        {
+                            coord[1,0] = row;
+                            bottomLeftFound = true;
+                        }
+                        
+                        if (topLeftFound && bottomLeftFound)
+                        {
+                            coord[1,1] = column;
+                            bottomRightFound = true;
+                        }
+                    }
+                }
+            }
+        }
+        
+        return coord;
+    
+    }
+        
+    
+    static void Main(string[] args)
+    {
+        int[ , ] rectangleCoord = GetRecWidth(image);
+        
+        for(int i = 0; i < rectangleCoord.GetLength(0); i++)
+        {
+            for(int j = 0; j < rectangleCoord.GetLength(1); j++)
+            {
+                Console.WriteLine(rectangleCoord[i,j]);
+            }
+        }
+    }
+}
+
