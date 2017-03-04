@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandboxConsole", "SandboxConsole\SandboxConsole.csproj", "{3F0DA331-99DB-4B4D-8B07-A470F91E131B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackerRankConsole", "HackerRankConsole\HackerRankConsole.csproj", "{C9E0791C-3E48-4CF6-9850-A4F009A030CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{3F0DA331-99DB-4B4D-8B07-A470F91E131B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F0DA331-99DB-4B4D-8B07-A470F91E131B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F0DA331-99DB-4B4D-8B07-A470F91E131B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9E0791C-3E48-4CF6-9850-A4F009A030CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9E0791C-3E48-4CF6-9850-A4F009A030CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9E0791C-3E48-4CF6-9850-A4F009A030CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9E0791C-3E48-4CF6-9850-A4F009A030CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
