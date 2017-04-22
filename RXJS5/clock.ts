@@ -5,6 +5,7 @@ export class Clock {
     private _time : Date;
     private _interval: any;
     private _ticker : BehaviorSubject<string>;
+    private _tickFreq : number;
 
     constructor(msSeed : number) {
         this._ticker = new BehaviorSubject(null);
@@ -12,7 +13,8 @@ export class Clock {
         this._ticker.next(this.getFormattedTime());
     }
 
-    tick( msTickFrequency: number) {
+    tick( msTickFrequency: number = 50) {
+        this._tickFreq = msTickFrequency;
         this._interval = setInterval( () => 
         {
             let prev = this._time.getTime();
@@ -21,13 +23,21 @@ export class Clock {
 
             this._ticker.next(this.getFormattedTime());
 
-        }, msTickFrequency);
+        }, this._tickFreq);
     }
 
     get ticker() : any {
         return this._ticker.asObservable();
     }
 
+    update(msValue: number) {
+        clearInterval(this._interval);
+        this._time = new Date(msValue);
+        this._ticker.next(this.getFormattedTime());
+        this.tick(this._tickFreq);
+    }
+
+    // assumes NTSC (30 FPS)
     getFormattedTime() : string{
         let hours = this.pad(this._time.getHours());
         let minutes = this.pad(this._time.getMinutes());
