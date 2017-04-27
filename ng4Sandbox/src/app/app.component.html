@@ -1,3 +1,10 @@
 <h1>
   {{title}}
 </h1>
+
+<table>
+    <tr *ngFor="let p of data.Person" [ngClass]="getClass(p)">
+        <td>{{p.name}}</td>
+        <td>{{p.age}}</td>
+    </tr>
+</table>
