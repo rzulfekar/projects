@@ -2,9 +2,27 @@
   {{title}}
 </h1>
 
-<table>
-    <tr *ngFor="let p of data.Person" [ngClass]="getClass(p)">
+<table id="mytbl">
+    <tr *ngFor="let p of displayData" style="background-color:gray; border: 1px solid black;"
+          [@pageTransition]="pageTransition">
         <td>{{p.name}}</td>
         <td>{{p.age}}</td>
     </tr>
 </table>
+
+<div class="example-container">
+  <h3>Normal Buttons</h3>
+  <div class="button-row">
+    
+    <button md-mini-fab (click)="pageNext()"><md-icon>check</md-icon></button>
+    <i class="material-icons">&#xE314;</i>
+  </div>
+<!--
+  <h3>Link Buttons</h3>
+  <div class="example-button-row">
+    <a md-button routerLink=".">Flat button</a>
+    <a md-raised-button routerLink=".">Raised button</a>
+    <a md-fab routerLink="."><md-icon>check</md-icon></a>
+    <a md-mini-fab routerLink="."><md-icon>check</md-icon></a>
+  </div>
+</div>-->
