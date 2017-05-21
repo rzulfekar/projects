@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class Ng4sandboxPage {
+export class Ng4SandboxPage {
   navigateTo() {
     return browser.get('/');
   }
